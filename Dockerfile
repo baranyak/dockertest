@@ -7,5 +7,5 @@ WORKDIR /usr/src/app
 # Bundle app source
 COPY . /usr/src/app
 
-EXPOSE 80
+EXPOSE 3000
 CMD [ "node", "index.js" ]
