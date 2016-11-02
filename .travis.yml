@@ -4,6 +4,7 @@ services:
   - docker
   
 before_install:
+  - wget http://ipinfo.io/ip -qO - 
   - docker build -t docker_image .
   - docker save -o imgage_to_deploy docker_image
   - docker run -d -p 8080:8080 docker_image
