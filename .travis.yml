@@ -4,11 +4,11 @@ services:
   - docker
   
 before_install:
-  - wget http://ipinfo.io/ip -qO - 
+#  - wget http://ipinfo.io/ip -qO - 
   - docker build -t docker_image .
-  - docker save -o imgage_to_deploy docker_image
+  - docker save -o image_to_deploy docker_image
 #  - docker run -d -p 8080:8080 docker_image
-  - docker run -p 8080:8080 docker_image
+#  - docker run -p 8080:8080 docker_image
 
 script:
 #  - ls -al .
@@ -16,3 +16,8 @@ script:
 #  - docker images
 #  - netstat -tulnp
 #  - curl http://localhost:8080
+  - echo -e $Travis_Key > ~/.ssh/key.pem
+  - chmod 600 ~/.ssh/key.pem
+  - scp -v -oStrictHostKeyChecking=no -i ~/.ssh/key.pem image_to_deploy docker_script.sh travis@hostname:folder_path
+  - ssh -i ~/.ssh/key.pem travis@hostname 'bash -s' < docker_script.sh
+
