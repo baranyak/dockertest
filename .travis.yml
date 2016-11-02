@@ -7,11 +7,12 @@ before_install:
   - wget http://ipinfo.io/ip -qO - 
   - docker build -t docker_image .
   - docker save -o imgage_to_deploy docker_image
-  - docker run -d -p 8080:8080 docker_image
+#  - docker run -d -p 8080:8080 docker_image
+  - docker run -p 8080:8080 docker_image
 
 script:
-  - ls -al .
-  - docker ps -a
-  - docker images
-  - netstat -tulnp
-  - curl http://localhost:8080
+#  - ls -al .
+#  - docker ps -a
+#  - docker images
+#  - netstat -tulnp
+#  - curl http://localhost:8080
