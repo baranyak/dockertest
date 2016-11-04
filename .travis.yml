@@ -18,6 +18,6 @@ script:
 #  - curl http://localhost:8080
   - echo -e $Travis_Key > ~/.ssh/key.pem
   - chmod 600 ~/.ssh/key.pem
-  - scp -v -oStrictHostKeyChecking=no -i ~/.ssh/key.pem image_to_deploy docker_script.sh travis@ec2-52-90-112-229.compute-1.amazonaws.com:/usr/share/docker_app
+  - scp -oStrictHostKeyChecking=no -i ~/.ssh/key.pem image_to_deploy travis@ec2-52-90-112-229.compute-1.amazonaws.com:/usr/share/docker_app
   - ssh -i ~/.ssh/key.pem travis@ec2-52-90-112-229.compute-1.amazonaws.com 'bash -s' < docker_script.sh
 
