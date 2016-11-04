@@ -4,7 +4,8 @@ services:
   - docker
   
 before_install: 
-  - docker build -t dockercloud_image .
-
+#  - docker build -t dockercloud_image .
+  - echo "Could be build without Travis"
+		
 script:
   - echo "Start deploying docker image using DockerCloud"
