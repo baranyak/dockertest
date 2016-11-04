@@ -5,7 +5,7 @@ const port = 8080;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello from Docker with Travis, \nas building engine and repository provider\n');
+  res.end('Hello from Docker with Travis, \nas building engine and repository provider!\n');
 });
 
 server.listen(port,() => {
