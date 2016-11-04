@@ -3,21 +3,13 @@ sudo: required
 services:
   - docker
   
-before_install:
-#  - wget http://ipinfo.io/ip -qO - 
-  - docker build -t docker_image .
-  - docker save -o image_to_deploy docker_image
-#  - docker run -d -p 8080:8080 docker_image
-#  - docker run -p 8080:8080 docker_image
+before_install: 
+  - docker build -t dockercloud_image .
+#  - docker save -o image_to_deploy dockercloud_image
 
 script:
-#  - ls -al .
-#  - docker ps -a
-#  - docker images
-#  - netstat -tulnp
-#  - curl http://localhost:8080
-  - echo -e $Travis_Key > ~/.ssh/key.pem
-  - chmod 600 ~/.ssh/key.pem
-  - scp -oStrictHostKeyChecking=no -i ~/.ssh/key.pem image_to_deploy travis@ec2-52-90-112-229.compute-1.amazonaws.com:/usr/share/docker_app
-  - ssh -i ~/.ssh/key.pem travis@ec2-52-90-112-229.compute-1.amazonaws.com 'bash -s' < docker_script.sh
+#  - echo -e $Travis_Key > ~/.ssh/key.pem
+#  - chmod 600 ~/.ssh/key.pem
+#  - scp -oStrictHostKeyChecking=no -i ~/.ssh/key.pem image_to_deploy travis@ec2-52-90-112-229.compute-1.amazonaws.com:/usr/share/docker_app
+#  - ssh -i ~/.ssh/key.pem travis@ec2-52-90-112-229.compute-1.amazonaws.com 'bash -s' < docker_script.sh
 
